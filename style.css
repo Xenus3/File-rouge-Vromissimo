@@ -1,0 +1,165 @@
+* {
+	margin: 0;
+	box-sizing: border-box;
+}
+
+
+/* Bordure simple autour des tableaux */
+table td tr{
+	/*border-collapse:collapse;*/
+	/*border: 2px black solid;*/
+	font-size: 20px;
+}
+/* Centrage tableau */
+table.centre{ 
+	/*margin:auto;*/
+	width: 100%;
+}
+/* centrage du texte dans les cellules du tableau */
+table.centre td{
+	text-align:center;
+	/*border: 2px black solid;*/
+	background-color: lightgray;
+	position: relative;
+	top: 200px;
+}
+
+/*table#jolie tr:first-child{
+	background:;
+}
+table#jolie tr:nth-child(2n){
+	background:;
+}
+table#jolie tr:nth-child(2n+3){
+	background:;
+}
+/* si un tableau a une seule ligne on l'affiche en rouge */
+/*table tr:only-child{
+	background:;
+}*/
+
+ form {
+    /*text-align: center;*/
+    /*overflow: hidden;*/
+    padding :  10px 20px;
+	height: 50px;
+	display:flex;
+	font-size: 16px;
+	font-weight: bold;
+	/*margin: 20px 20px;*/
+	justify-content: space-around;
+	/*flex-wrap: wrap;*/
+}
+ 
+input, label{
+	padding:  5px 5px;
+	border-radius: 15px;
+	cursor: pointer;
+	font-weight: 600;
+	font-family: 'Times New Roman', Times, serif;
+	font-size: 16px;
+}
+
+body form a  {
+	-webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+	text-decoration: none;
+    color: initial;
+	background: white;
+	padding: 3px 5px;
+	border-radius: 15px;
+	border: 2px black solid;
+	font-weight: light;
+}
+
+h1.titre {
+	text-align: center;
+	background-color:white;
+	height: 50px;
+	color:black;
+	font-size: 40px;
+}
+
+.formulaire  {
+	height:100px;
+	padding: 20px 0;
+	/*margin: auto;*/
+	/*width: 300px;*/
+	background-color: #A8010D;
+	color: white;
+	position: fixed;
+	top: 100px;
+	z-index: 1;
+}
+
+body {
+	
+	background-position: center;
+	height: 100%;
+	width: 100%;
+
+}
+
+img {
+	width:300px;
+	height:300px;
+	
+}
+
+header {
+	display:flex;
+	height: 100px;
+	width: 100%;
+	position: fixed;
+	z-index: 1;
+	background-color: white;
+}
+
+.navigation ul{
+	list-style: none;
+	display: flex;
+	justify-content: end;
+	height: 100%;
+}
+
+.navigation ul li a{
+	display: flex;
+	font-size: 20px;
+	padding: 35px 15px;
+	text-decoration: none;
+	color:black;
+	font-weight: bold;
+}
+
+.logo {
+	width: 30%;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-content: center;
+
+}
+
+.navigation {
+	width: 70%;
+}
+
+.logo img {
+	object-fit: cover;
+	height: 100%;
+}
+
+.logo h1 {
+	height: 100%;
+	object-fit: cover;
+	color: #A8010D;
+	padding: 25px 10px;
+}
+
+.banner {
+	background-image: url('https://www.fastnclassic.com/wp-content/uploads/2022/06/HOME-3-1920x715.jpg');
+	height: 400px;
+	position: relative;
+	top: 100px;
+}
