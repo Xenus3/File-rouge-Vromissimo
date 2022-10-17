@@ -45,8 +45,8 @@ if(isset($_GET['s']) or isset($_GET['carburant']) or isset($_GET['modele'])) {//
     </div>
     <div class="navigation">
       <ul>
-        <li><a href=#>Vendre</a><li>
-        <li><a href=#>Contact</a><li>
+        <li><a href="http://localhost/php/vroomissimo/index.php">Accueil</a><li>
+        <li><a href=#>Lister</a><li>
         <li><a href=#>Connection</a><li>
         <li><a href=#>Panier</a><li>
       </ul>
@@ -67,7 +67,7 @@ if(isset($_GET['s']) or isset($_GET['carburant']) or isset($_GET['modele'])) {//
         <input type="search" id="modele" name="modele" placeholder="Par Modele">
         <br/>
         <br/>
-        <a href="http://localhost/php/moteur-pdo-better/index.php">Reinitialiser</a>
+        <a href="http://localhost/php/vroomissimo/index.php">Reinitialiser</a>
         <input type="submit" name="Rechercher" value="Lancer Recherche">
         <!--<input type="search" id="Essence" name="carburant" value="Essence">
         <label for="Essence">Essence</label><br>-->
@@ -76,8 +76,8 @@ if(isset($_GET['s']) or isset($_GET['carburant']) or isset($_GET['modele'])) {//
     <br/>
     <section class="afficher_voiture">
     
-    <table class="centre" id="jolie">
-                    <tr> <td> Marque </td> <td> Modèle </td> <td> prix </td><td> Kilométrage </td><td> Carburant </td><td> Carrosserie </td><td> Photo </td> </tr>
+    <!-- <table class="centre" id="jolie">
+                    <tr> <td> Marque </td> <td> Modèle </td> <td> prix </td><td> Kilométrage </td><td> Carburant </td><td> Carrosserie </td><td> Photo </td> </tr> -->
         <?php 
           // on verifie si la valeure de la requete sur notre base de donneés n'est pas nulle
             if($allcars->rowCount() > 0)  {
@@ -85,13 +85,26 @@ if(isset($_GET['s']) or isset($_GET['carburant']) or isset($_GET['modele'])) {//
               // tant que la variable voiture retourne des valeurs on cree des lignes dans un tableau HTML
               while($voiture = $allcars->fetch()) {
                     ?>
-                    <tr><td><?= $voiture['marque'] ?></td>
+                    <!-- <tr><td><?= $voiture['marque'] ?></td>
                     <td><?=  $voiture['modele'] ?></td>
                     <td><?=  $voiture['prix'] ?>$</td>
                     <td><?=  $voiture['kilometrage'] ?></td>
                     <td><?=  $voiture['carburant'] ?></td>
                     <td><?=  $voiture['carroserie'] ?></td>
-                    <td><img src="<?= $voiture['lien'] ?>"></td></tr> 
+                    <td><img src="<?= $voiture['lien'] ?>"></td></tr> -->
+
+                    <div class="afficher_article"> 
+                    <img src="<?= $voiture['lien'] ?>">
+                    <p>Marque: <?= $voiture['marque'] ?></p>
+                    <p>Modele: <?=  $voiture['modele'] ?></p>
+                    <p>Kilometrage: <?=  $voiture['kilometrage'] ?></p>
+                    <p>Carburant: <?=  $voiture['carburant'] ?></p>
+                    <p>Carroserrie: <?=  $voiture['carroserie'] ?></p>
+                    <p>Prix: <?=  $voiture['prix'] ?>€</p>
+                    <a class="bout_modif" http=#>Modifier</a>
+                    <a class="bout_efac" http=#>Supprimer</a>
+                    </div>
+
                     
                     
                     <?php
