@@ -1,37 +1,3 @@
-<?php
-// ouverture de connexion vers base de donneés vroomissimo
-$dsn = "mysql:dbname=vroomissimo;host=localhost;charset=utf8";
-$user = "root";
-$mdp = "Lens2022!";
-
-try {
-    $option = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION);
-    $connexion = new PDO($dsn, $user, $mdp, $option);
-} catch (PDOException $e) {
-    printf("Echec connexion : %s\n", $e->getMessage());
-
-}
-// preparation de la requete avec des marqeurs nommés
-/*$sql = "INSERT INTO voiture (marque, modele, kilometrage, carburant, carroserie, prix) VALUES (:marque, :modele, :kilometrage, :carburant, :carroserie, :prix)";
-$reponse = $connexion->prepare($sql);
-
-// recuperation des valeurs issues de la soumission du formulaire
-$marque = $_GET["marque"];
-$modele = $_GET["modele"];
-$kilometrage = $_GET["kilometrage"];
-$carburant = $_GET["carburant"];
-$carroserie = $_GET["carroserie"];
-$prix = $_GET["prix"];
-
-// execution de la requete prepareé
-
-$reponse->execute( array( ":marque" =>$marque,
-                          ":modele" =>$modele,
-                          ":kilometrage" =>$kilometrage,
-                          ":carburant" =>$carburant,
-                          ":carroserie" =>$carroserie,
-                          ":prix" =>$prix));*/
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,7 +6,7 @@ $reponse->execute( array( ":marque" =>$marque,
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
+  <!--<header>
     <div class="logo">
       <img src="assets/photos/vintage_cars.png">
       <h1>Vroomissimo</h1>
@@ -54,29 +20,39 @@ $reponse->execute( array( ":marque" =>$marque,
       </ul>
     </div>
 
-  </header>
+  </header>-->
+  <?php include("header.php"); ?>
     <div id="form_inserer">
-        <form method="GET">
+        <form method="POST" id="form_2" action="upload.php" enctype="multipart/form-data">
             <label for="marque">Marque:</label>
-            <input type="text" name="marque">
+            <input type="text" name="marque" required>
             <br/>
             <label for="modele">Modele:</label>
-            <input type="text" name="modele">
+            <input type="text" name="modele" required>
             <br/>
             <label for="kilometrage">Kilometrage:</label>
-            <input type="text" name="kilometrage">
+            <input type="text" name="kilometrage" required>
             <br/>
             <label for="carburant">Carburant:</label>
-            <input type="text" name="carburant">
+            <input type="text" name="carburant" required>
             <br/>
             <label for="carroserie">Carroserie:</label>
-            <input type="text" name="carroserie">
+            <input type="text" name="carroserie" required>
             <br/>
             <label for="prix">Prix:</label>
-            <input type="text" name="prix">
+            <input type="text" name="prix" required>
             <br/>
-            <input type="submit" value="Soumettre"></input>
+            <label for="image">Selectionnez une image:</label>
+            <input type="file" name="file" >
+            <input type="submit" value="Soumettre" name="soumettre"></input>
         </form>
 </div>
 </body>
 </html>
+
+
+
+
+
+
+
