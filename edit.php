@@ -1,5 +1,5 @@
 <?php
-include ('lister.php');
+
 session_start();
 include ('dbconfig.php');
 
@@ -21,5 +21,94 @@ include ('dbconfig.php');
             $carburant = $n['carburant'];
             $carroserie = $n['carroserie'];
             $prix = $n['prix'];
+
+            
 		}
 	}
+
+
+?>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Moteur de Recherche</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!--<header>
+    <div class="logo">
+      <img src="assets/photos/vintage_cars.png">
+      <h1>Vroomissimo</h1>
+    </div>
+    <div class="navigation">
+      <ul>
+        <li><a href="http://localhost/php/vroomissimo/index.php">Accueil</a><li>
+        <li><a href=#>Lister</a><li>
+        <li><a href=#>Connection</a><li>
+        <li><a href=#>Panier</a><li>
+      </ul>
+    </div>
+
+  </header>-->
+  <?php include("header.php"); ?>
+    <div id="form_inserer">
+        <h1 style="text-align:center; padding-bottom:60px">Modifiez votre Annonce</h1>
+        <form method="POST" id="form_2" action="upload.php" enctype="multipart/form-data">
+            <input type="hidden" name="id" value="<?= $id ?>">
+            <label for="marque">Marque:</label>
+            <input type="text" name="marque" required value="<?= $marque ?>">
+            <br/>
+            <label for="modele">Modele:</label>
+            <input type="text" name="modele" required value="<?= $modele ?>">
+            <br/>
+            <label for="kilometrage">Kilometrage:</label>
+            <input type="text" name="kilometrage" required value=<?= $kilometrage ?>>
+            <br/>
+            <label for="carburant">Carburant:</label>
+            <input type="text" name="carburant" required value=<?= $carburant ?>>
+            <br/>
+            <label for="carroserie">Carroserie:</label>
+            <input type="text" name="carroserie" required value=<?= $carroserie ?>>
+            <br/>
+            <label for="prix">Prix:</label>
+            <input type="text" name="prix" required value=<?= $prix ?>>
+            <br/>
+            <label for="image">Selectionnez une image:</label>
+            <input type="file" name="file" >
+            <?php if ($update == true): ?>
+            <input type="submit" value="Modifier" name="modifier" style="background: #556B2F; width: 30%;"></input>
+            <?php else: ?>
+            <input type="submit" value="Soumettre" name="soumettre" style="width: 30%"></input>
+            <?php endif ?>
+        </form>
+</div>
+</body>
+</html>
+
+
+<?php
+if (isset($_POST['modifier'])) {
+    $id = $_POST['id'];
+    var_dump($id);
+    $marque = $_POST['marque'];
+    $modele = $_POST['modele'];
+    $kilometrage = $_POST['kilometrage'];
+    $carburant = $_POST['carburant'];
+    $carroserie = $_POST['carroserie'];
+    $prix = $_POST['prix'];
+
+    $sql = "UPDATE voiture SET marque=:marque, modele=:modele, kilometrage=:kilometrage, carburant=:carburant, carroserie=:carroserie, prix=:prix WHERE id_voiture=:id";
+    $edit = $bdd->prepare($sql);
+    $edit->execute( array(":id"=>$id,
+                          ":marque"=>$marque,
+                          ":modele"=>$modele,
+                          ":kilometrage"=>$kilometrage,
+                          ":carburant"=>$carburant,
+                          ":carroserie"=>$carroserie,
+                          ":prix"=>$prix ));
+    $_SESSION['message'] = "Address updated!"; 
+    header('location: http://localhost/php/vroomissimo/index.php');
+}

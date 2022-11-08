@@ -23,6 +23,7 @@
   </header>-->
   <?php include("header.php"); ?>
     <div id="form_inserer">
+        <h1 style="text-align:center; padding-bottom:60px">Listez votre Vehicule</h1>
         <form method="POST" id="form_2" action="upload.php" enctype="multipart/form-data">
             <label for="marque">Marque:</label>
             <input type="text" name="marque" required>
