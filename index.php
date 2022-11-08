@@ -84,14 +84,15 @@ if(isset($_GET['s']) or isset($_GET['carburant']) or isset($_GET['modele'])) {//
                     
                     <div class="afficher_article"> 
                     <img src="<?= $voiture['photos_1'] ?>">
+                     
                     <p>Marque: <?= $voiture['marque'] ?></p>
                     <p>Modele: <?=  $voiture['modele'] ?></p>
                     <p>Kilometrage: <?=  $voiture['kilometrage'] ?></p>
                     <p>Carburant: <?=  $voiture['carburant'] ?></p>
                     <p>Carroserrie: <?=  $voiture['carroserie'] ?></p>
                     <p>Prix: <?=  $voiture['prix'] ?>€</p>
-                    <a class="bout_modif" http=#>Modifier</a>
-                    <a class="bout_efac" href='delete.php' onClick='delete.php'>Supprimer</a>
+                    <a class="bout_modif" href='edit.php?edit=<?= $voiture["id_voiture"] ?>'>Modifier</a>
+                    <a class="bout_efac" href='delete.php?del=<?= $voiture["id_voiture"] ?>'>Supprimer</a>
                     </div>
 
                     
