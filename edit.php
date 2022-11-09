@@ -29,12 +29,12 @@ include ('dbconfig.php');
 
               $id = $_POST['id'];
               var_dump($id);
-              $marque = $_POST['marque'];
-              $modele = $_POST['modele'];
-              $kilometrage = $_POST['kilometrage'];
-              $carburant = $_POST['carburant'];
-              $carroserie = $_POST['carroserie'];
-              $prix = $_POST['prix'];
+              $marque = trim(htmlspecialchars($_POST['marque']));
+              $modele = trim(htmlspecialchars($_POST['modele']));
+              $kilometrage = trim(htmlspecialchars($_POST['kilometrage']));
+              $carburant = trim(htmlspecialchars($_POST['carburant']));
+              $carroserie = trim(htmlspecialchars($_POST['carroserie']));
+              $prix = trim(htmlspecialchars($_POST['prix']));
               //$photo = $_POST['file'];
               $targetDir = "assets/photos/";
               $fileName = basename($_FILES["file"]["name"] );

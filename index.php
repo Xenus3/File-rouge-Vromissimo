@@ -5,11 +5,12 @@ include("dbconfig.php");
 // on instancie un nouvel objet PDO pour nous connecter a notre base de donneés
 $query = 'SELECT * from voiture';// on cree une variable pour stocker notre requete SQL
 $allcars = $bdd->query($query);// on stock le resultat de la requete sur notre base donneés dans une variable
-if(isset($_GET['s']) or isset($_GET['carburant']) or isset($_GET['modele'])) {// si l'une des zones de saisie est definie on declenche le block de code suivant
+if(isset($_GET['s']) or isset($_GET['carburant']) or isset($_GET['modele']) or isset($_GET['couleur'])) {// si l'une des zones de saisie est definie on declenche le block de code suivant
    // on definis no variable qui vont stocker le contenus de nos zones de saisies
-    $recherche = htmlspecialchars($_GET['s']);
-    $carburant = htmlspecialchars($_GET['carburant']);
-    $modele = htmlspecialchars($_GET['modele']);
+    $recherche = trim(htmlspecialchars($_GET['s']));
+    $carburant = trim(htmlspecialchars($_GET['carburant']));
+    $modele = trim(htmlspecialchars($_GET['modele']));
+    $couleur = trim(htmlspecialchars($_GET['couleur']));
     // on definis une variable avec un tableau vide pour stocker les requetes complementaires
     $conditions = array();
     // on verifie si nos zones de saisie ne sont pas vide ensuite on ajoute des chaines de charactere a notre variable tableau
@@ -21,6 +22,9 @@ if(isset($_GET['s']) or isset($_GET['carburant']) or isset($_GET['modele'])) {//
     }
     if(!empty($modele)) {
         $conditions[] = 'modele like "%'.$modele.'%"';
+    }
+    if(!empty($couleur)) {
+      $conditions[] = 'couleur like "%'.$couleur.'%"';
     }
     // si une des zones n'est pas vide on ajoute la chaine de character correspondante a la requete SQL initiale
     $sql = $query;
@@ -52,6 +56,7 @@ if(isset($_GET['s']) or isset($_GET['carburant']) or isset($_GET['modele'])) {//
         <!--<label for="modele">Filtrer par modele:</label><br/>-->
         <input type="search" id="modele" name="modele" placeholder="Par Modele">
         <br/>
+        <input type="search" id="couleur" name="couleur" placeholder="Par Couleur">
         <br/>
         <a href="http://localhost/php/vroomissimo/index.php">Reinitialiser</a>
         <input type="submit" name="Rechercher" value="Lancer Recherche">
@@ -90,7 +95,9 @@ if(isset($_GET['s']) or isset($_GET['carburant']) or isset($_GET['modele'])) {//
                     <p>Kilometrage: <?=  $voiture['kilometrage'] ?></p>
                     <p>Carburant: <?=  $voiture['carburant'] ?></p>
                     <p>Carroserrie: <?=  $voiture['carroserie'] ?></p>
+                    <p>Couleur: <?=  $voiture['couleur'] ?></p>
                     <p>Prix: <?=  $voiture['prix'] ?>€</p>
+                    
                     <a class="bout_modif" href='edit.php?edit=<?= $voiture["id_voiture"] ?>'>Modifier</a>
                     <a class="bout_efac" href='delete.php?del=<?= $voiture["id_voiture"] ?>'>Supprimer</a>
                     </div>

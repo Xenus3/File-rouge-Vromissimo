@@ -30,12 +30,12 @@ if(isset($_POST["soumettre"]) && !empty($_FILES["file"]["name"])){
 
 // recuperation des valeurs issues de la soumission du formulaire
 if(isset($_POST["marque"]) and isset($_POST["modele"]) and isset($_POST["kilometrage"]) and isset($_POST["carburant"]) and isset($_POST["carroserie"]) and isset($_POST["prix"]) and isset($_POST["soumettre"]) and !empty($_FILES["file"]["name"])){
-$marque = $_POST["marque"];
-$modele = $_POST["modele"];
-$kilometrage = $_POST["kilometrage"];
-$carburant = $_POST["carburant"];
-$carroserie = $_POST["carroserie"];
-$prix = $_POST["prix"];
+$marque = trim(htmlspecialchars($_POST["marque"]));
+$modele = trim(htmlspecialchars($_POST["modele"]));
+$kilometrage = trim(htmlspecialchars($_POST["kilometrage"]));
+$carburant = trim(htmlspecialchars($_POST["carburant"]));
+$carroserie = trim(htmlspecialchars($_POST["carroserie"]));
+$prix = trim(htmlspecialchars($_POST["prix"]));
 $targetFilePath = $targetDir . $fileName;
 
 // execution de la requete prepareé
