@@ -8,6 +8,7 @@ include("dbconfig.php");
 
 // preparation de la requete avec des marqeurs nommés
 $sql = "INSERT into voiture (marque, modele, kilometrage, carburant, carroserie, prix, photos_1) values (:marque, :modele, :kilometrage, :carburant, :carroserie, :prix, :photos_1)";
+
 $reponse = $bdd->prepare($sql);
 $targetDir = "assets/photos/";
 $fileName = basename($_FILES["file"]["name"] );

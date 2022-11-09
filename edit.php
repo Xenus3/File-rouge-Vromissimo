@@ -35,7 +35,10 @@ include ('dbconfig.php');
               $carburant = $_POST['carburant'];
               $carroserie = $_POST['carroserie'];
               $prix = $_POST['prix'];
-              $photo = $_POST['file'];
+              //$photo = $_POST['file'];
+              $targetDir = "assets/photos/";
+              $fileName = basename($_FILES["file"]["name"] );
+              $targetFilePath = $targetDir . $fileName;
           
               $sql = "UPDATE voiture SET marque=:marque, modele=:modele, kilometrage=:kilometrage, carburant=:carburant, carroserie=:carroserie, prix=:prix, photos_1=:photo WHERE id_voiture=:id";
 
@@ -48,7 +51,7 @@ include ('dbconfig.php');
                                     ":carburant"=>$carburant,
                                     ":carroserie"=>$carroserie,
                                     ":prix"=>$prix,
-                                    ":photo"=>$photo ));
+                                    ":photo"=>$targetFilePath ));
 
               $_SESSION['message'] = "Address updated!"; 
 
@@ -71,22 +74,7 @@ include ('dbconfig.php');
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!--<header>
-    <div class="logo">
-      <img src="assets/photos/vintage_cars.png">
-      <h1>Vroomissimo</h1>
-    </div>
-    <div class="navigation">
-      <ul>
-        <li><a href="http://localhost/php/vroomissimo/index.php">Accueil</a><li>
-        <li><a href=#>Lister</a><li>
-        <li><a href=#>Connection</a><li>
-        <li><a href=#>Panier</a><li>
-      </ul>
-    </div>
-
-  </header>-->
-  <?php include("header.php"); ?>
+    <?php include("header.php"); ?>
     <div id="form_inserer">
         <h1 style="text-align:center; padding-bottom:60px">Modifiez votre Annonce</h1>
         <form method="POST" id="form_2" action="" enctype="multipart/form-data">
